@@ -21,13 +21,51 @@ body {
     .cards {
         display: inline-block;
         border: 1px solid #ccc;
-        height: 100px;
-        width: 60px;
+        height: 250px;
+        width: 20%;
         margin: 10px;
         cursor: pointer;
+        background-color: #d2d6d2;
 
         &.matched {
             pointer-events: none;
+        }
+        //create sass map for this and iterate
+        &.selected {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            &.angular {
+                background-image: url(../images/angular.png);
+            }
+            &.d3 {
+                background-image: url(../images/d3.png);
+            }
+            &.jenkins {
+                background-image: url(../images/jenkins.png);
+            }
+            &.postcss {
+                background-image: url(../images/postcss.png);
+            }
+            &.react {
+                background-image: url(../images/react.png);
+            }
+            &.redux {
+                background-image: url(../images/redux.png);
+            }
+            &.sass {
+                background-image: url(../images/sass.png);
+            }
+            &.supercharge {
+                background-image: url(../images/supercharge.png);
+            }
+            &.ts {
+                background-image: url(../images/ts.png);
+            }
+            &.webpack {
+                background-image: url(../images/webpack.png);
+            }
         }
     }
 }

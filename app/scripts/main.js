@@ -2,8 +2,6 @@
 
 var PairsGame = (function () {
 
-    // privates
-
     var numberOfTries = 0,
         cards = [ //dont do this next time
             'angular',
@@ -57,7 +55,8 @@ var PairsGame = (function () {
 
     function assignCards(resizedCards) {
         $(cardSelector).each(function (index) {
-            $(this).attr('çard-type', resizedCards[index]);
+            $(this).attr('çard-type', resizedCards[index])
+                .addClass(resizedCards[index]);
         });
         bindUI();
     }
@@ -78,8 +77,9 @@ var PairsGame = (function () {
                 $selectedCards.addClass('matched');
                 removeSelectedClass($selectedCards);
             } else {
-                removeSelectedClass($selectedCards);
-
+                setTimeout(function () {
+                    removeSelectedClass($selectedCards);
+                }, 3000);
             }
             updateTries();
         }
@@ -100,20 +100,18 @@ var PairsGame = (function () {
 
     function checkWin() {
         var cardsLength = $(cardSelector).length,
-            matchedLength = $(cardSelector+ '.matched').length;
+            matchedLength = $(cardSelector + '.matched').length;
         if (cardsLength === matchedLength) {
             console.log('you win');
         }
     }
 
-    // Return an object exposed to the public
     return {
-
-        // Add items to our basket
         init: function (numberOfCards) {
             initTable(numberOfCards);
         }
     }
 })();
 
+//create listener for restart and settings for number of cards and add as it variable
 PairsGame.init(6);
