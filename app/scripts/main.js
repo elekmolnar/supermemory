@@ -109,9 +109,22 @@ var PairsGame = (function () {
     return {
         init: function (numberOfCards) {
             initTable(numberOfCards);
+        },
+
+        destroy: function () {
+            $(cardSelector).off('click');
+            $(cardSelector).remove();
         }
     }
 })();
 
 //create listener for restart and settings for number of cards and add as it variable
+$('.number-of-cards').on('click', function (e) {
+    var numberOfCards = parseInt($(e.target).text()),
+        maxSize = 10;
+    if (numberOfCards <= maxSize) {
+        PairsGame.destroy();
+        PairsGame.init(numberOfCards);
+    }
+});
 PairsGame.init(6);

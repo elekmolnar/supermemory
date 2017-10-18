@@ -12,5 +12,12 @@ Functions:
 - Restart: an option to reset the game and randomly reorder the cards on the table
 - Set deck size (6 - 20)
 - Display the count of the tries
-- Show us your extraordinary animation skills 
+- Show us your extraordinary animation skills
 - Show the all-time favourite score
+
+
+To start it locally run
+ - gulp serve
+
+build for production
+ - gulp build
