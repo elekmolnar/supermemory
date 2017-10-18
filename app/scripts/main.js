@@ -29,7 +29,8 @@ var PairsGame = (function () {
         ],
         containerSelector = '.card-container',
         cardSelector = '.cards',
-        selectedClass = 'selected';
+        selectedClass = 'selected',
+        triesSelector = '.tries-count';
 
     function initTable(numberOfCards) {
         var cardsContainer = '',
@@ -75,18 +76,34 @@ var PairsGame = (function () {
         if ($selectedCards.length === 2) {
             if ($selectedCards.first().attr('çard-type') === $selectedCards.last().attr('çard-type')) {
                 $selectedCards.addClass('matched');
+                removeSelectedClass($selectedCards);
             } else {
-                $selectedCards.each(function () {
-                    $(this).removeClass(selectedClass);
-                })
+                removeSelectedClass($selectedCards);
+
             }
-            increaseTries(numberOfTries);
+            updateTries();
         }
     }
 
-    function increaseTries() {
+    function removeSelectedClass($selectedCards) {
+        $selectedCards.each(function (i, item) {
+            $(item).removeClass(selectedClass);
+        });
+    }
+
+    function updateTries() {
         numberOfTries++;
-        console.log(numberOfTries);
+        $(triesSelector).html(numberOfTries);
+
+        checkWin();
+    }
+
+    function checkWin() {
+        var cardsLength = $(cardSelector).length,
+            matchedLength = $(cardSelector+ '.matched').length;
+        if (cardsLength === matchedLength) {
+            console.log('you win');
+        }
     }
 
     // Return an object exposed to the public

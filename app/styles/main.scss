@@ -25,6 +25,10 @@ body {
         width: 60px;
         margin: 10px;
         cursor: pointer;
+
+        &.matched {
+            pointer-events: none;
+        }
     }
 }
 
