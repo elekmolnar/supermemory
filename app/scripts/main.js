@@ -79,7 +79,7 @@ var PairsGame = (function () {
             } else {
                 setTimeout(function () {
                     removeSelectedClass($selectedCards);
-                }, 3000);
+                }, 2000);
             }
             updateTries();
         }
@@ -102,7 +102,8 @@ var PairsGame = (function () {
         var cardsLength = $(cardSelector).length,
             matchedLength = $(cardSelector + '.matched').length;
         if (cardsLength === matchedLength) {
-            console.log('you win');
+            PairsGame.destroy();
+            $(containerSelector).append('<span class="win">You win the Game</span>');
         }
     }
 

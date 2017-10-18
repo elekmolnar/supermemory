@@ -1,5 +1,45 @@
 // bower:scss
 // endbower
+$main-color: #333;
+$bg-color: #fafafa;
+$card-color: #527b52;
+$matched-color: #66968f;
+$color-border: #ccc;
+
+@mixin fadein() {
+    @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    @-moz-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    @-webkit-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    @-ms-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    @-o-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+}
+
+@mixin fadeInAnimation($animation, $duration) {
+    -webkit-animation: $animation $durations;
+    -moz-animation: $animation $duration;
+    -ms-animation: $animation $duration;
+    -o-animation: $animation $duration;
+    animation: $animation $duration;
+}
 
 .browserupgrade {
     margin: 10px 0;
@@ -9,26 +49,30 @@
 }
 
 body {
-    background: #fafafa;
+    background: $bg-color;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #333;
+    color: $body-color;
 }
 
 .card-container {
     width: 100%;
     display: block;
 
+    //it can be display: flex for better style
     .cards {
         display: inline-block;
-        border: 1px solid #ccc;
+        border: 1px solid $color-border;
         height: 250px;
         width: 20%;
         margin: 10px;
         cursor: pointer;
-        background-color: #d2d6d2;
+        background-color: $card-color;
+        @include fadeInAnimation(fadeIn, 2s);
 
         &.matched {
             pointer-events: none;
+            background-color: $matched-color;
+            opacity: 0.2;
         }
         //create sass map for this and iterate
         //TODO create fancy animation
@@ -74,3 +118,5 @@ body {
 .tries {
     display: block;
 }
+
+#include fadeIn();
