@@ -34,7 +34,7 @@ $color-border: #ccc;
 }
 
 @mixin fadeInAnimation($animation, $duration) {
-    -webkit-animation: $animation $durations;
+    -webkit-animation: $animation $duration;
     -moz-animation: $animation $duration;
     -ms-animation: $animation $duration;
     -o-animation: $animation $duration;
@@ -51,7 +51,7 @@ $color-border: #ccc;
 body {
     background: $bg-color;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: $body-color;
+    color: $main-color;
 }
 
 .card-container {
@@ -67,7 +67,7 @@ body {
         margin: 10px;
         cursor: pointer;
         background-color: $card-color;
-        @include fadeInAnimation(fadeIn, 2s);
+        @include fadeInAnimation(fadein, 2s);
 
         &.matched {
             pointer-events: none;
@@ -119,4 +119,4 @@ body {
     display: block;
 }
 
-#include fadeIn();
+@include fadein();
